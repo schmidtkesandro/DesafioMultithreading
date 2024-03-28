@@ -8,50 +8,6 @@ import (
 	"time"
 )
 
-func CEP1() {
-	// Faça uma solicitação GET a uma URL
-	resp, err := http.Get("http://viacep.com.br/ws/01153000/json/")
-	if err != nil {
-		fmt.Println("Erro ao fazer a solicitação:", err)
-		return
-	}
-	defer resp.Body.Close()
-
-	// Leia o corpo da resposta
-	body, err := io.ReadAll(io.Reader(resp.Body))
-	if err != nil {
-		fmt.Println("Erro ao ler o corpo da resposta:", err)
-		return
-	}
-
-	// Imprima o corpo da resposta
-
-	fmt.Println(string(body))
-}
-func CEP2() {
-	// Faça uma solicitação GET a uma URL
-	resp, err := http.Get("https://brasilapi.com.br/api/cep/v1/01153000 + cep/")
-	if err != nil {
-		fmt.Println("Erro ao fazer a solicitação:", err)
-		return
-	}
-	defer resp.Body.Close()
-
-	// Leia o corpo da resposta
-	body, err := io.ReadAll(io.Reader(resp.Body))
-	if err != nil {
-		fmt.Println("Erro ao ler o corpo da resposta:", err)
-		return
-	}
-
-	// Imprima o corpo da resposta
-	fmt.Println(" ")
-	fmt.Println(string(body))
-	fmt.Println(" ")
-	return
-
-}
-
 // Função que faz a solicitação HTTP e retorna a resposta
 func getResponseBody(url string) ([]byte, error) {
 	// Faz a solicitação GET à URL fornecida
@@ -85,7 +41,7 @@ func main() {
 	cep := args[1]
 
 	go func() {
-		time.Sleep(time.Second)
+		//	time.Sleep(time.Second)
 
 		// Chama a função getResponseBody e obtém a resposta
 		body, err := getResponseBody("http://viacep.com.br/ws/" + cep + "/json/")
