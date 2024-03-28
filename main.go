@@ -41,6 +41,7 @@ func main() {
 	cep := args[1]
 
 	go func() {
+		//  atrasando a chamada dessa API
 		//	time.Sleep(time.Second)
 
 		// Chama a função getResponseBody e obtém a resposta
