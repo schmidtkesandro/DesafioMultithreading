@@ -30,15 +30,18 @@ func main() {
 	c2 := make(chan string)
 	// Recupera os argumentos da linha de comando
 	args := os.Args
-
+	cep := ""
 	// Verifica se há argumentos suficientes
 	if len(args) < 2 {
+		fmt.Println("________________________________________________________________________________________________________________________________ ")
 		fmt.Println("Passe o CEP no formato 99999999 como argumento na chamada. Exemplo: go run main.go 01153000 ")
-		return
+		fmt.Println("Utilizaremos o CEP 01153000 para seguir na pesquisa")
+		fmt.Println("________________________________________________________________________________________________________________________________ ")
+		cep = "01153000"
+	} else {
+		// Recupera o primeiro argumento (o segundo item em args, porque o primeiro é o nome do programa)
+		cep = args[1]
 	}
-
-	// Recupera o primeiro argumento (o segundo item em args, porque o primeiro é o nome do programa)
-	cep := args[1]
 
 	go func() {
 		//  atrasando a chamada dessa API
@@ -79,4 +82,5 @@ func main() {
 	case <-time.After(time.Second):
 		println("timeout ")
 	}
+	fmt.Println("________________________________________________________________________________________________________________________________ ")
 }
